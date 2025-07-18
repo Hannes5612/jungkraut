@@ -1,17 +1,33 @@
-/* Reset and base styles */
+/* 
+  Reset und Basis-Styles
+  - Entfernt Standard-Margins/Paddings 
+  - Setzt Box-Sizing auf border-box für konsistentes Layout
+*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 
+  Grundlegende Seiten-Styles
+  - Roboto Condensed als moderne, gut lesbare Schriftart
+  - Heller Hintergrund für guten Kontrast
+  - Angenehme Zeilenhöhe für bessere Lesbarkeit
+*/
 body {
   font-family: "Roboto Condensed", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
-  background-color: #fdffec;
+  background-color: #fdffec; /* Heller, warmer Grünton für natürliches Feeling */
 }
 
+/* 
+  Container für Seiteninhalt
+  - Maximale Breite begrenzt für bessere Lesbarkeit
+  - Flex-Layout für sticky Footer
+  - Auto margins für Zentrierung
+*/
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -21,27 +37,48 @@ body {
   flex-direction: column;
 }
 
-/* Navigation */
+/* 
+  Navigationsleiste
+  - Sticky Position für konstante Erreichbarkeit
+  - Dunkelgrüner Hintergrund passend zum Naturthema
+  - Schatten für visuelle Tiefe
+*/
 .navbar {
   background: #0a5514;
   padding: 0.5rem 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1000; /* Stellt sicher, dass Nav über anderen Elementen liegt */
 }
 
+/* 
+  Navigation Liste
+  - Flex für horizontale Anordnung
+  - Zentrierte Ausrichtung
+  - Gleichmäßige Abstände zwischen Items
+*/
 .navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
 }
 
+/* Positionierung der Nav-Items */
 .navbar li {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
+/* 
+  Nav-Links
+  - Abgerundete Ecken für modernes Design
+  - Smooth Transition für Hover-Effekte
+  - Weiße Schrift für Kontrast auf grünem Hintergrund
+*/
 .navbar a {
   color: white;
   text-decoration: none;
@@ -49,15 +86,26 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 25px;
   transition: all 0.3s ease;
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
+/* 
+  Hover-Effekt für Nav-Links
+  - Subtile Hintergrund-Aufhellung
+  - Leichte Aufwärtsbewegung für Interaktivität
+*/
 .navbar a:hover {
   background-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-/* Header */
+/* 
+  Header-Bereich
+  - Markanter grüner Hintergrund
+  - Abgerundete untere Ecken
+  - Schatten für Tiefenwirkung
+*/
 .header {
   text-align: center;
   padding: 2rem 0;
@@ -68,6 +116,11 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* 
+  Header-Text
+  - Limelight Schrift für dekorativen Look
+  - Textschatten für bessere Lesbarkeit
+*/
 .header-text {
   font-family: "Limelight", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 3rem;
@@ -77,12 +130,22 @@ body {
   text-align: center;
 }
 
-/* Content */
+/* 
+  Hauptinhalt
+  - Flex-grow für Ausfüllen des verfügbaren Platzes
+  - Abstand zum Footer
+*/
 .content {
   flex: 1;
   margin-bottom: 2rem;
 }
 
+/* 
+  Blog-Post Container
+  - Weiße Cards mit Schatten
+  - Hover-Animation für Interaktivität
+  - Begrenzte Breite für bessere Lesbarkeit
+*/
 .post {
   background: white;
   border-radius: 15px;
@@ -95,17 +158,28 @@ body {
   margin-right: auto;
 }
 
+/* Hover-Effekt für Posts */
 .post:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* 
+  Bild-Container für Posts
+  - Feste Höhe für konsistentes Layout
+  - Overflow hidden für Zoom-Effekt
+*/
 .post-bild {
   width: 100%;
   height: 300px;
   overflow: hidden;
 }
 
+/* 
+  Post-Bilder
+  - Object-fit cover für gleichmäßige Bildgrößen
+  - Zoom-Animation bei Hover
+*/
 .post-bild img {
   width: 100%;
   height: 100%;
@@ -113,10 +187,16 @@ body {
   transition: transform 0.3s ease;
 }
 
+/* Zoom-Effekt für Bilder bei Post-Hover */
 .post:hover .post-bild img {
   transform: scale(1.05);
 }
 
+/* 
+  Post-Überschriften
+  - Limelight Schrift für Konsistenz
+  - Dunkle Farbe für guten Kontrast
+*/
 .post h2 {
   padding: 1.5rem 1.5rem 0.5rem;
   font-family: "Limelight", Tahoma, Geneva, Verdana, sans-serif;
@@ -125,13 +205,19 @@ body {
   font-weight: 600;
 }
 
+/* Post-Text Styling */
 .post p {
   padding: 0 1.5rem 1.5rem;
   color: #666;
   line-height: 1.7;
 }
 
-/* Footer */
+/* 
+  Footer
+  - Gradient-Hintergrund für visuelles Interesse
+  - Sticky am unteren Rand
+  - Abgerundete obere Ecken
+*/
 .footer {
   background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   color: white;
@@ -141,12 +227,17 @@ body {
   border-radius: 20px 20px 0 0;
 }
 
+/* Footer-Text leicht transparent */
 .footer p {
   font-size: 0.9rem;
   opacity: 0.9;
 }
 
-/* Startpage */
+/* 
+  Startseiten-Layout
+  - Flex für zweispaltiges Design
+  - Transparenter Hintergrund
+*/
 .startpage {
   display: flex;
   align-items: center;
@@ -157,11 +248,17 @@ body {
   border-radius: 8px;
 }
 
+/* Textbereich der Startseite */
 .startpage-text {
   font-family: "Roboto Condensed", Tahoma, Geneva, Verdana, sans-serif;
   flex: 1;
 }
 
+/* 
+  Startseiten-Titel
+  - Große Schrift für Impact
+  - Linksbündig für bessere Lesbarkeit
+*/
 .startpage-title {
   font-family: "Limelight", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2.5rem;
@@ -170,20 +267,29 @@ body {
   text-align: left;
 }
 
+/* Überschriften auf der Startseite */
 .startpage-text h1 {
   color: #2c3e50;
   margin-bottom: 1rem;
 }
 
+/* Textabsätze auf der Startseite */
 .startpage-text p {
   color: #666;
   line-height: 1.6;
 }
 
+/* Bildbereich der Startseite */
 .startpage-image {
   flex: 1;
   text-align: center;
 }
+
+/* 
+  Startseiten-Bilder
+  - Responsive Breite
+  - Sepia-Filter für vintage Look
+*/
 .startpage-image img {
   max-width: 27vw;
   height: auto;
@@ -191,19 +297,37 @@ body {
   filter: sepia(100%) hue-rotate(40deg) saturate(90%);
 }
 
-/* Inline image with subtitle */
+/* 
+  Inline-Bilder mit Untertiteln
+  - Zentrierte Ausrichtung
+  - Flex für vertikale Anordnung
+*/
 .inline-image {
   display: inline-block;
   margin: 1rem 0;
   text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Inline-Bilder responsive */
 .inline-image img {
   max-width: 100%;
   height: auto;
   border-radius: 4px;
 }
 
+/* Video-Element Styling */
+video {
+  width: 70%;
+  margin: auto;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Untertitel für Bilder */
 .inline-image .subtitle {
   font-size: 0.9rem;
   color: #666;
@@ -211,7 +335,11 @@ body {
   font-style: italic;
 }
 
-/* Contact Form */
+/* 
+  Kontaktformular
+  - Weiße Card
+  - Zentriert mit begrenzter Breite
+*/
 .contact {
   background: white;
   padding: 2rem;
@@ -221,22 +349,30 @@ body {
   margin-right: auto;
 }
 
+/* Kontaktformular Überschrift */
 .contact h2 {
   color: #2c3e50;
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
+/* Formular-Gruppen */
 .form-group {
   margin-bottom: 1rem;
 }
 
+/* Labels im Formular */
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
+/* 
+  Formular-Eingabefelder
+  - Volle Breite
+  - Konsistentes Styling
+*/
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -245,6 +381,11 @@ body {
   border-radius: 4px;
 }
 
+/* 
+  Submit-Button
+  - Grüner Hintergrund passend zum Theme
+  - Pointer-Cursor für Interaktivität
+*/
 .submit-btn {
   background: #0a5514;
   color: white;
@@ -254,7 +395,10 @@ body {
   cursor: pointer;
 }
 
-/* Responsive design */
+/* 
+  Responsive Design
+  - Anpassungen für Tablets
+*/
 @media (max-width: 768px) {
   .container {
     padding: 0 15px;
@@ -275,6 +419,10 @@ body {
   }
 }
 
+/* 
+  Responsive Design
+  - Anpassungen für Smartphones
+*/
 @media (max-width: 480px) {
   .header {
     padding: 2rem 0;
@@ -294,7 +442,10 @@ body {
   }
 }
 
-/* Animation for page load */
+/* 
+  Lade-Animation
+  - Sanftes Einblenden von unten
+*/
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -306,20 +457,25 @@ body {
   }
 }
 
+/* Animation auf Posts anwenden */
 .post {
   animation: fadeInUp 0.6s ease-out;
 }
 
+/* Verzögerte Animation für zweiten Post */
 .post:nth-child(2) {
   animation-delay: 0.2s;
 }
 
-/* Smooth scrolling */
+/* Smooth Scroll für bessere UX */
 html {
   scroll-behavior: smooth;
 }
 
-/* Focus styles for accessibility */
+/* 
+  Fokus-Styles für Barrierefreiheit
+  - Deutliche Outline für Keyboard-Navigation
+*/
 .navbar a:focus,
 .post:focus {
   outline: 2px solid #667eea;
