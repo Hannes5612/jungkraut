@@ -481,3 +481,109 @@ html {
   outline: 2px solid #667eea;
   outline-offset: 2px;
 }
+
+/* 
+  Sitemap Navigation für Blogposts
+  - 2-Spalten-Layout für Blogposts
+  - Linke Spalte für Navigation
+  - Rechte Spalte für Content
+*/
+.blog-layout {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sitemap-nav {
+  flex: 0 0 250px;
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+.sitemap-nav h3 {
+  font-family: "Limelight", Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 2px solid #3f7d45;
+  padding-bottom: 0.5rem;
+}
+
+.sitemap-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sitemap-nav li {
+  margin-bottom: 0.5rem;
+}
+
+.sitemap-nav a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #666;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  border-left: 3px solid transparent;
+}
+
+.sitemap-nav a:hover {
+  background-color: #f8f9fa;
+  color: #3f7d45;
+  border-left-color: #3f7d45;
+  transform: translateX(5px);
+}
+
+.sitemap-nav a.active {
+  background-color: #3f7d45;
+  color: white;
+  border-left-color: #2c3e50;
+}
+
+.sitemap-nav a.prev,
+.sitemap-nav a.next {
+  font-weight: 600;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+}
+
+.sitemap-nav a.prev:hover,
+.sitemap-nav a.next:hover {
+  background-color: #3f7d45;
+  color: white;
+  border-color: #3f7d45;
+}
+
+.sitemap-nav .nav-arrow {
+  font-size: 0.8rem;
+  margin: 0 0.5rem;
+}
+
+.blog-content {
+  flex: 1;
+}
+
+/* Responsive Design für Sitemap */
+@media (max-width: 768px) {
+  .blog-layout {
+    flex-direction: column;
+  }
+
+  .sitemap-nav {
+    flex: none;
+    position: static;
+    order: 2;
+  }
+
+  .blog-content {
+    order: 1;
+  }
+}
