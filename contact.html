@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>jUNgKRAUT - back to the roots</title>
-    <meta name="description" content="Fridis Blog">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="description" content="Fridis Blog" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    
     <div class="container">
-        <header>
+      <header>
         <nav class="navbar" aria-label="Hauptnavigation">
             <ul>          
                 <li><a href="about.html" class="logo"> <img src="bilder/logo.png" alt="jUNgKRAUT Logo" width="150"></a> </li>
@@ -25,44 +30,85 @@
             </ul>
         </nav>
         <div class="header">
-            <h1 class="header-text" lang="de" aria-label="Kontakt">Kontakt</h1>
-         </div>
-        </header>
-        <div class="content">
-            <div class="contact">
-                <h2>Kontaktiere uns!</h2>
-                <form class="contact-form" role="form" aria-label="Kontaktformular">
-                    <div class="form-group">
-                        <label for="name" id="name-label">Name:</label>
-                        <input type="text" id="name" name="name" required aria-required="true" aria-labelledby="name-label" aria-invalid="false">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" id="email-label">Email:</label>
-                        <input type="email" id="email" name="email" required aria-required="true" aria-labelledby="email-label" aria-invalid="false">
-                    </div>
-                    <div class="form-group">
-                        <label for="message" id="message-label">Nachricht:</label>
-                        <textarea id="message" name="message" rows="3" required aria-required="true" aria-labelledby="message-label" aria-invalid="false"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="rating" id="rating-label">Wie bewerten Sie unsere Seite:</label>
-                        <select id="rating" name="rating" required aria-required="true" aria-labelledby="rating-label" aria-invalid="false">
-                            <option value="5">⭐⭐⭐⭐⭐</option>
-                            <option value="4">⭐⭐⭐⭐</option>
-                            <option value="3">⭐⭐⭐</option>
-                            <option value="2">⭐⭐</option>
-                            <option value="1">⭐</option>
-                        </select>
-                    </div>
-                    <button type="submit" name="submit" class="submit-btn" aria-label="Formular absenden" onclick="window.location.href='mailto:ff062@hdm-stuttgart.de'">Abschicken</button>
-                </form>
+          <h1 class="header-text" lang="de" aria-label="Kontakt">Kontakt</h1>
+        </div>
+      </header>
+      <div class="content">
+        <div class="contact">
+          <h2>Kontaktiere uns!</h2>
+          <form class="contact-form" role="form" aria-label="Kontaktformular">
+            <div class="form-group">
+              <label for="name" id="name-label">Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                aria-required="true"
+                aria-labelledby="name-label"
+                aria-invalid="false"
+              />
             </div>
+            <div class="form-group">
+              <label for="email" id="email-label">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-required="true"
+                aria-labelledby="email-label"
+                aria-invalid="false"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message" id="message-label">Nachricht:</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="3"
+                required
+                aria-required="true"
+                aria-labelledby="message-label"
+                aria-invalid="false"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="rating" id="rating-label"
+                >Wie bewerten Sie unsere Seite:</label
+              >
+              <select
+                id="rating"
+                name="rating"
+                required
+                aria-required="true"
+                aria-labelledby="rating-label"
+                aria-invalid="false"
+              >
+                <option value="5">⭐⭐⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="1">⭐</option>
+              </select>
+            </div>
+            <button
+              type="submit"
+              name="submit"
+              class="submit-btn"
+              aria-label="Formular absenden"
+              onclick="window.location.href='mailto:ff062@hdm-stuttgart.de'"
+            >
+              Abschicken
+            </button>
+          </form>
         </div>
-        <footer>
+      </div>
+      <footer>
         <div class="footer">
-            <p>Copyright 2025 jUNgKRAUT - back to the roots</p>
+          <p>Copyright 2025 jUNgKRAUT - back to the roots</p>
         </div>
-        </footer>
+      </footer>
     </div>
   </body>
 </html>
