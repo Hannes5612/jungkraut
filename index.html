@@ -19,6 +19,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,6 +34,7 @@
       href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script defer src="cookie-consent.js"></script>
     <script defer src="home-daily-post.js"></script>
     <script defer src="gallery.js"></script>
@@ -141,6 +146,9 @@
               <span id="gallery-total">5</span>
             </p>
           </div>
+        </div>
+        <div id="gallery-dialog" title="Mehr zum Bild" style="display: none">
+          <p id="gallery-dialog-text"></p>
         </div>
         <div class="gallery-controls">
           <button type="button" id="gallery-first">Zum Startbild</button>

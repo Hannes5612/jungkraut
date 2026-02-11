@@ -373,6 +373,7 @@ body {
   max-height: 480px;
   object-fit: cover;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .gallery-text {
@@ -403,6 +404,62 @@ body {
 }
 
 .gallery-controls button:hover {
+  background-color: #0c6a1a;
+}
+
+/* jUNgKRAUT Mission-Dialog (jQuery UI) */
+.mission-dialog {
+  border-radius: 16px !important;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.3);
+  border: 2px solid #0a5514 !important;
+  overflow: hidden;
+}
+
+.mission-dialog .ui-dialog-titlebar {
+  background: linear-gradient(135deg, #0a5514, #3f7d45);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border: none;
+}
+
+.mission-dialog .ui-dialog-title {
+  font-family: "Limelight", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+}
+
+.mission-dialog .ui-dialog-titlebar-close {
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.mission-dialog .ui-dialog-titlebar-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.mission-dialog .ui-dialog-content {
+  padding: 1.3rem 1.5rem;
+  background: #ffffff;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.mission-dialog .ui-dialog-buttonpane {
+  border-top: 1px solid #e2e8f0;
+  padding: 0.75rem 1.25rem;
+}
+
+.mission-dialog .ui-dialog-buttonpane button {
+  border-radius: 999px;
+  background-color: #0a5514;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+}
+
+.mission-dialog .ui-dialog-buttonpane button:hover {
   background-color: #0c6a1a;
 }
 
