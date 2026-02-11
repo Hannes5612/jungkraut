@@ -247,7 +247,14 @@
       });
 
       if (!ok) {
-        // Probleme sind bereits an den Feldern markiert
+        // Probleme sind bereits an den Feldern markiert – Button kurz „schütteln“
+        if (submitBtn) {
+          submitBtn.classList.remove("shake");
+          // Reflow erzwingen, damit die Animation erneut abgespielt werden kann
+          // eslint-disable-next-line no-unused-expressions
+          submitBtn.offsetWidth;
+          submitBtn.classList.add("shake");
+        }
         return;
       }
 

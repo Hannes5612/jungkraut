@@ -32,6 +32,7 @@
     />
     <script defer src="cookie-consent.js"></script>
     <script defer src="home-daily-post.js"></script>
+    <script defer src="gallery.js"></script>
   </head>
   <body>
     <div class="container">
@@ -112,6 +113,43 @@
       >
         <h2 id="daily-post-heading">Post of the day</h2>
         <div id="daily-post" class="daily-post-placeholder"></div>
+      </section>
+      <section
+        class="mission-gallery"
+        aria-labelledby="mission-gallery-heading"
+      >
+        <h2 id="mission-gallery-heading">Unsere Vision in Bildern</h2>
+        <p class="mission-gallery-intro">
+          jUNgKRAUT steht für Wachstum, Wildwuchs und neue Blickwinkel. In
+          dieser kleinen Bilderreise zeigen wir dir, was unsere Mission
+          ausmacht.
+        </p>
+        <div class="gallery-container" aria-live="polite">
+          <div class="gallery-image-wrapper">
+            <img
+              id="gallery-image"
+              src="media/images/post1.jpg"
+              alt=""
+            />
+          </div>
+          <div class="gallery-text">
+            <p id="gallery-caption"></p>
+            <p class="gallery-counter">
+              Bild
+              <span id="gallery-current">1</span>
+              von
+              <span id="gallery-total">5</span>
+            </p>
+          </div>
+        </div>
+        <div class="gallery-controls">
+          <button type="button" id="gallery-first">Zum Startbild</button>
+          <button type="button" id="gallery-prev">Zurück</button>
+          <button type="button" id="gallery-next">Weiter</button>
+          <button type="button" id="gallery-toggle-auto">
+            Automatik pausieren
+          </button>
+        </div>
       </section>
       <div class="footer">
         <p>Copyright 2026 jUNgKRAUT - back to the roots</p>
