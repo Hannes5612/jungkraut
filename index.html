@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <head>
     <meta charset="utf-8" />
@@ -17,7 +17,7 @@
     <meta name="author" content="jUNgKRAUT" />
     <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,6 +30,8 @@
       href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <script defer src="cookie-consent.js"></script>
+    <script defer src="home-daily-post.js"></script>
   </head>
   <body>
     <div class="container">
@@ -38,7 +40,10 @@
           <ul>
             <li>
               <a href="about.html" class="logo">
-                <img src="media/images/logo.png" alt="jUNgKRAUT Logo" width="150"
+                <img
+                  src="media/images/logo.png"
+                  alt="jUNgKRAUT Logo"
+                  width="150"
               /></a>
             </li>
             <li><a href="index.html" lang="en" aria-label="Home">Home</a></li>
@@ -100,8 +105,16 @@
           />
         </div>
       </div>
+      <section
+        id="daily-post-wrapper"
+        aria-labelledby="daily-post-heading"
+        class="daily-post-wrapper"
+      >
+        <h2 id="daily-post-heading">Post of the day</h2>
+        <div id="daily-post" class="daily-post-placeholder"></div>
+      </section>
       <div class="footer">
-        <p>Copyright 2025 jUNgKRAUT - back to the roots</p>
+        <p>Copyright 2026 jUNgKRAUT - back to the roots</p>
       </div>
     </div>
   </body>

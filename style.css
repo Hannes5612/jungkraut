@@ -152,7 +152,9 @@ body {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   margin-bottom: 2rem;
   max-width: 800px;
   margin-left: auto;
@@ -296,6 +298,91 @@ body {
   height: auto;
   border-radius: 8px;
   filter: sepia(100%) hue-rotate(40deg) saturate(90%);
+}
+
+/* Post of the day auf der Startseite */
+.daily-post-wrapper {
+  margin: 1rem 0 2.5rem;
+}
+
+.daily-post-wrapper h2 {
+  font-family: "Limelight", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.daily-post-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  align-items: center;
+}
+
+.daily-post-image {
+  flex: 0 0 260px;
+}
+
+.daily-post-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.daily-post-content {
+  flex: 1;
+}
+
+.daily-post-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: #0a5514;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.daily-post-content h3 {
+  font-family: "Limelight", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.daily-post-content p {
+  margin-bottom: 0.75rem;
+  color: #555;
+}
+
+.daily-post-link {
+  display: inline-block;
+  margin-top: 0.25rem;
+  color: #0a5514;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.daily-post-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .daily-post-card {
+    flex-direction: column;
+  }
+
+  .daily-post-image {
+    flex: 1 1 auto;
+  }
+
+  .daily-post-image img {
+    height: 200px;
+  }
 }
 
 /* 
@@ -587,4 +674,155 @@ html {
   .blog-content {
     order: 1;
   }
+}
+
+/* 
+  Cookie-Consent Banner / Modal
+  - Halbtransparenter Hintergrund über der Seite
+  - Zentrale Box für Einwilligungsdialog
+*/
+.cookie-consent-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 2000;
+}
+
+.cookie-consent-modal {
+  background: #ffffff;
+  color: #333;
+  max-width: 480px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-size: 0.95rem;
+}
+
+.cookie-consent-modal h2 {
+  font-family: "Limelight", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #2c3e50;
+}
+
+.cookie-consent-modal p {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.cookie-consent-category {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  background-color: #f9fafb;
+}
+
+.cookie-consent-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.cookie-consent-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background-color: #0a5514;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cookie-consent-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.cookie-consent-toggle input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+.cookie-consent-toggle.disabled span {
+  color: #718096;
+}
+
+.cookie-consent-hint {
+  font-size: 0.8rem;
+  color: #4a5568;
+}
+
+.cookie-consent-hint a {
+  color: #0a5514;
+  text-decoration: underline;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.cookie-btn-primary,
+.cookie-btn-secondary {
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cookie-btn-primary {
+  background-color: #0a5514;
+  color: white;
+}
+
+.cookie-btn-primary:hover {
+  background-color: #0c6a1a;
+}
+
+.cookie-btn-secondary {
+  background-color: #e2e8f0;
+  color: #1a202c;
+}
+
+.cookie-btn-secondary:hover {
+  background-color: #cbd5e0;
+}
+
+@media (min-width: 768px) {
+  .cookie-consent-backdrop {
+    align-items: center;
+  }
+}
+
+/* 
+  Formular-Validierung – Fehlermarkierung
+  - Rote Umrandung & zarter Hintergrund bei Fehlern
+  - Kurze Fehlermeldung direkt unter dem Feld
+*/
+.form-group.has-error input,
+.form-group.has-error textarea,
+.form-group.has-error select {
+  border-color: #e53e3e;
+  background-color: #fff5f5;
+}
+
+.field-error {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #e53e3e;
 }
