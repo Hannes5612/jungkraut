@@ -110,6 +110,8 @@
               name="submit"
               class="submit-btn"
               aria-label="Formular absenden"
+              onclick="if (!this.form.checkValidity()) { this.classList.remove('shake'); void this.offsetWidth; this.classList.add('shake'); }"
+              onanimationend="this.classList.remove('shake')"
             >
               Abschicken
             </button>
