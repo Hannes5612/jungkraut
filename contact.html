@@ -105,6 +105,7 @@
                 <option value="1">⭐</option>
               </select>
             </div>
+            <!-- Shake-Effekt für ungültige Eingaben -->
             <button
               type="submit"
               name="submit"
@@ -113,6 +114,7 @@
               onclick="if (!this.form.checkValidity()) { this.classList.remove('shake'); void this.offsetWidth; this.classList.add('shake'); }"
               onanimationend="this.classList.remove('shake')"
             >
+
               Abschicken
             </button>
           </form>

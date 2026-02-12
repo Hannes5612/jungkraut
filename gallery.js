@@ -16,7 +16,7 @@ var piccount = 0;
     {
       src: "media/images/carousel-hand.jpg",
       alt: "Eine Hand im Grünen, auf die Wasser tröpfelt",
-      caption: "Verbundenheit mit der Natur schafft Stärke und Verbindung.",
+      caption: "Verbundenheit mit der Natur ist wichtig für unsere Gesundheit und unsere Umwelt.",
       description:
         "Eine Hand im Grünen, auf die Wasser tröpfelt. Dieses Bild symbolisiert die Verbindung mit der Natur und die Stärke, die wir aus ihr ziehen können.",
     },

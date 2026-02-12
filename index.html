@@ -38,6 +38,7 @@
     <script defer src="cookie-consent.js"></script>
     <script defer src="home-daily-post.js"></script>
     <script defer src="gallery.js"></script>
+    <script defer src="drag-game.js"></script>
   </head>
   <body>
     <div class="container">
@@ -157,6 +158,192 @@
           <button type="button" id="gallery-toggle-auto">
             Automatik pausieren
           </button>
+        </div>
+      </section>
+      <section class="dandelion-game" aria-labelledby="dandelion-game-heading">
+        <h2 id="dandelion-game-heading">Pflück den Löwenzahn!</h2>
+        <p class="dandelion-game-intro">
+          Ziehe den Löwenzahn mit der Maus in den Korb. So sammelst du nach und nach
+          alles ein, was sonst oft als „Unkraut“ abgestempelt wird.
+        </p>
+        <div class="dandelion-game-field">
+          <div class="dandelion-field">
+            <button
+              class="weed-spot dandelion-draggable"
+              type="button"
+              aria-label="Löwenzahn zum Korb ziehen"
+            >
+              <img
+                src="media/images/basket-game/dandelion.png"
+                alt="Löwenzahn"
+              />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-label="Käfer"
+            >
+              <img
+                src="media/images/basket-game/bug.png"
+                alt="Käfer"
+              />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-label="Gras"
+            >
+              <img
+                src="media/images/basket-game/grass.png"
+                alt="Gras"
+              />
+            </button>
+            <button
+              class="weed-spot dandelion-draggable"
+              type="button"
+              aria-label="Löwenzahn zum Korb ziehen"
+            >
+              <img
+                src="media/images/basket-game/dandelion.png"
+                alt="Löwenzahn"
+              />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-label="Blatt"
+            >
+              <img
+                src="media/images/basket-game/leaf.png"
+                alt="Blatt"
+              />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-hidden="true"
+              tabindex="-1"
+            >
+              <img
+                  src="media/images/basket-game/bush.png"
+                  alt="Busch"
+              />
+            </button>
+            <button
+              class="weed-spot dandelion-draggable"
+              type="button"
+              aria-label="Löwenzahn zum Korb ziehen"
+            >
+              <img
+                src="media/images/basket-game/dandelion.png"
+                alt="Löwenzahn"
+              />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-hidden="true"
+              tabindex="-1"
+            >
+              <img
+                src="media/images/basket-game/mushroom.png"
+                alt="Grüne Suppe mit Croutons"
+              />
+            </button><button
+            class="weed-spot"
+            type="button"
+            aria-label="Käfer"
+            >
+              <img
+                src="media/images/basket-game/bug.png"
+                alt="Käfer"
+              />
+            </button>
+            <button
+              class="weed-spot dandelion-draggable"
+              type="button"
+              aria-label="Löwenzahn"
+            >
+              <img
+                src="media/images/basket-game/dandelion.png"
+                alt="Löwenzahn"
+              />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-label="Busch"
+            >
+              <img
+                src="media/images/basket-game/bush.png"
+                alt="Busch"
+              />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-label="Biene"
+            >
+              <img
+                src="media/images/basket-game/bee.png"
+                alt="Biene"
+              />
+            </button>
+            <button
+            class="weed-spot"
+            type="button"
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            <img
+              src="media/images/basket-game/mushroom.png"
+              alt="Pilz"
+            />
+          </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-label="Blatt"
+            >
+              <img
+                src="media/images/basket-game/leaf.png"
+                alt="Blatt"
+              />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-hidden="true"
+              tabindex="-1"
+            >
+              <img
+                src="media/images/basket-game/grass.png"
+                alt="Gras"
+              />
+            </button>
+            <button
+              class="weed-spot dandelion-draggable"
+              type="button"
+              aria-label="Löwenzahn"
+            >
+              <img
+                src="media/images/basket-game/dandelion.png"
+                alt="Löwenzahn"
+              />
+            </button>
+
+          </div>
+          <div
+            id="dandelion-basket"
+            class="dandelion-basket"
+            aria-label="Korb zum Sammeln des Löwenzahns"
+          >
+            <p id="dandelion-basket-text">
+              Zieh den Löwenzahn hierher –
+              <span id="dandelion-count">0</span>
+              gesammelt.
+            </p>
+          </div>
         </div>
       </section>
       <div class="footer">
