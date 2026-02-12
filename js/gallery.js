@@ -2,7 +2,30 @@
 // Es wird gezählt, wie viele Bilder der Benutzer betrachtet hat.
 var piccount = 0;
 
-(function ($) {
+// Defensive: Wenn jQuery (z. B. wegen CDN-Fehler) nicht geladen wurde,
+// wird die JS-Galerie deaktiviert und die CSS-Variante sichtbar gelassen.
+(function () {
+  if (typeof window === "undefined" || typeof window.jQuery === "undefined") {
+    console.warn(
+      "[jUNgKRAUT] Galerie konnte nicht initialisiert werden, jQuery ist nicht verfügbar.",
+    );
+    try {
+      var jsGallery = document.querySelector(".mission-gallery-js");
+      var cssGallery = document.querySelector(".mission-gallery-css");
+      if (jsGallery) {
+        jsGallery.style.display = "none";
+      }
+      if (cssGallery) {
+        cssGallery.style.display = "block";
+      }
+    } catch (e) {
+      // Wenn auch das fehlschlägt, geschieht nichts weiter – die Seite bleibt nutzbar.
+    }
+    return;
+  }
+
+  var $ = window.jQuery;
+
   const INTERVAL_MS = 5000;
   const slides = [
     {
@@ -201,4 +224,4 @@ var piccount = 0;
 
     updateToggleLabel();
   });
-})(jQuery);
+})();
