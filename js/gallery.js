@@ -3,10 +3,10 @@
 var piccount = 0;
 
 (function ($) {
-  const INTERVAL_MS = 4723;
+  const INTERVAL_MS = 5000;
   const slides = [
     {
-      src: "media/images/carousel-loewenzahn.jpg",
+      src: "media/images/gallery/carousel-loewenzahn.jpg",
       alt: "Löwenzahn, der verblüht auf einer Wiese wächst",
       caption:
         "Unsere Mission: Wissen über die Kräfte der Natur teilen und zeigen, wie sehr sie uns im Alltag stärkt.",
@@ -14,14 +14,15 @@ var piccount = 0;
         "Löwenzahn, der verblüht auf einer Wiese wächst. Löwenzahn ist ein Symbol für Wachstum und Lebensfreude, dem wir täglich begegnen.",
     },
     {
-      src: "media/images/carousel-hand.jpg",
+      src: "media/images/gallery/carousel-hand.jpg",
       alt: "Eine Hand im Grünen, auf die Wasser tröpfelt",
-      caption: "Verbundenheit mit der Natur ist wichtig für unsere Gesundheit und unsere Umwelt.",
+      caption:
+        "Verbundenheit mit der Natur ist wichtig für unsere Gesundheit und unsere Umwelt.",
       description:
         "Eine Hand im Grünen, auf die Wasser tröpfelt. Dieses Bild symbolisiert die Verbindung mit der Natur und die Stärke, die wir aus ihr ziehen können.",
     },
     {
-      src: "media/images/post3.jpg",
+      src: "media/images/posts/post3.jpg",
       alt: "Hände, die eine Pflanze mit einer Harke entfernen",
       caption:
         "Vorurteile an der Wurzel packen – statt vorschnell zu rupfen, fragen wir nach den Geschichten dahinter.",
@@ -29,7 +30,7 @@ var piccount = 0;
         "Hände, die eine Pflanze mit einer Harke entfernen. Diese Harke symbolisiert die Tatsache, dass wir oft vorschnell zu rupfen beginnen und erst nachdenken, wenn es zu spät ist.",
     },
     {
-      src: "media/images/carousel-city.jpg",
+      src: "media/images/gallery/carousel-city.jpg",
       alt: "Begrünte Stadtfassaden der Zukunft",
       caption:
         "Wir träumen von Städten, in denen Wildwuchs nicht bekämpft, sondern als Klimaretter gefeiert wird.",
@@ -37,7 +38,7 @@ var piccount = 0;
         "Diese Begrünten Stadtfassaden symbolisieren die Vision, dass wir in Zukunft in Städten leben, in denen Wildwuchs nicht bekämpft, sondern als Klimaretter gefeiert wird.",
     },
     {
-      src: "media/images/carousel-soup.jpg",
+      src: "media/images/gallery/carousel-soup.jpg",
       alt: "Grüne Suppe mit Croutons",
       caption:
         "Von der Wiese auf den Teller: jUNgKRAUT verbindet Naturwissen mit alltagstauglichen Inspirationen.",

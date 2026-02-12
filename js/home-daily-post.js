@@ -4,7 +4,7 @@
       title: "Löwenzahn statt Größenwahn",
       description:
         "Warum ein unscheinbares \"Unkraut\" uns Demut lehren kann und was es mit dem Anthropozentrismus auf sich hat.",
-      image: "media/images/post1.jpg",
+      image: "media/images/posts/post1.jpg",
       alt: "Sprössling in einer Fuge zwischen Pflastersteinen in der Stadt",
       link: "posts/post1.html",
     },
@@ -12,7 +12,7 @@
       title: "Gesünder leben mit Unkraut",
       description:
         "Brennnessel, Spitzwegerich & Co.: Wie die vermeintlichen Störenfriede zu deinem Gesundheits-Booster werden.",
-      image: "media/images/post2.png",
+      image: "media/images/posts/post2.png",
       alt: "Blüten eines Wegerichs im hohen Gras",
       link: "posts/post2.html",
     },
@@ -20,7 +20,7 @@
       title: "Unbemerkt durchwuchert",
       description:
         "Vom Klettverschluss bis zum Salzstreuer: Wie Unkraut unsere Alltags-Erfindungen inspiriert hat.",
-      image: "media/images/post3.jpg",
+      image: "media/images/posts/post3.jpg",
       alt: "Hände, die mit einer Harke eine Pflanze aus Erde ziehen",
       link: "posts/post3.html",
     },
@@ -28,7 +28,7 @@
       title: "Die grünen Superhelden unserer Zukunft",
       description:
         "Wie Unkraut Städte kühlen, CO₂ speichern und Lebensräume für Insekten schaffen kann.",
-      image: "media/images/post4.png",
+      image: "media/images/posts/post4.png",
       alt: "Begrünte futuristische Stadtfassaden mit Menschen auf der Straße",
       link: "posts/post4.html",
     },
@@ -36,7 +36,7 @@
       title: "Unkraut kennt keine Grenzen",
       description:
         "Mit Löwenzahn, Kudzu, Shiso & Parthenium einmal um die Welt: Was Unkraut in anderen Ländern bedeutet.",
-      image: "media/images/post5.png",
+      image: "media/images/posts/post5.png",
       alt: "Bund Kräuter auf Schneidebrett neben Küchenmesser",
       link: "posts/post5.html",
     },

@@ -354,6 +354,13 @@ body {
   margin-bottom: 1.25rem;
 }
 
+/* Fokusrahmen, wenn CSS-Galerie per Tab erreicht wird */
+.mission-gallery-css:focus-within {
+  outline: 2px solid #0a5514;
+  outline-offset: 4px;
+  border-radius: 18px;
+}
+
 .gallery-container {
   display: flex;
   flex-direction: column;
@@ -681,7 +688,8 @@ body {
 }
 .daily-post-noscript p {
   font-size: 0.9rem;
-  font-style: italic;}
+  font-style: italic;
+}
 
 .daily-post-image {
   flex: 0 0 260px;
