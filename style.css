@@ -409,6 +409,79 @@ body {
   background-color: #0c6a1a;
 }
 
+/* CSS-only Galerie (Fallback ohne JavaScript) */
+.css-gallery {
+  margin-top: 1.25rem;
+}
+
+.css-gallery input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.css-slides {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+.css-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.css-slide img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.css-slide figcaption {
+  color: #555;
+}
+
+#css-slide-1:checked ~ .css-slides .css-slide-1,
+#css-slide-2:checked ~ .css-slides .css-slide-2,
+#css-slide-3:checked ~ .css-slides .css-slide-3,
+#css-slide-4:checked ~ .css-slides .css-slide-4,
+#css-slide-5:checked ~ .css-slides .css-slide-5 {
+  position: relative;
+  opacity: 1;
+}
+
+.css-gallery-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.css-gallery-controls label {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: #cbd5e0;
+  cursor: pointer;
+}
+
+#css-slide-1:checked ~ .css-gallery-controls label[for="css-slide-1"],
+#css-slide-2:checked ~ .css-gallery-controls label[for="css-slide-2"],
+#css-slide-3:checked ~ .css-gallery-controls label[for="css-slide-3"],
+#css-slide-4:checked ~ .css-gallery-controls label[for="css-slide-4"],
+#css-slide-5:checked ~ .css-gallery-controls label[for="css-slide-5"] {
+  background-color: #0a5514;
+}
+
 /* jUNgKRAUT Mission-Dialog (jQuery UI) */
 .mission-dialog {
   border-radius: 16px !important;
@@ -468,6 +541,18 @@ body {
 /* Drag & Drop Spiel: Löwenzahn pflücken */
 .dandelion-game {
   margin-bottom: 2.5rem;
+}
+.dandelion-game-noscript {
+  display: none;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.dandelion-game-noscript p {
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #e98a0e;
 }
 
 .dandelion-game h2 {

@@ -161,6 +161,8 @@ var piccount = 0;
     showSlide(0, false);
     // Automatik starten
     startTimer();
+    // CSS-only Galerie ausblenden
+    $(".mission-gallery-css").hide();
 
     $btnPrev.on("click", function () {
       if (currentIndex === 0) {

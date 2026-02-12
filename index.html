@@ -35,6 +35,22 @@
       rel="stylesheet"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <noscript>
+      <style>
+        .mission-gallery-js {
+          display: none;
+        }
+        .mission-gallery-css {
+          display: block;
+        }
+        .dandelion-game-field{
+          display: none;
+        }
+        .dandelion-game-noscript{
+          display: block;
+        }
+      </style>
+    </noscript>
     <script defer src="cookie-consent.js"></script>
     <script defer src="home-daily-post.js"></script>
     <script defer src="gallery.js"></script>
@@ -130,42 +146,118 @@
           dieser kleinen Bilderreise zeigen wir dir, was unsere Mission
           ausmacht.
         </p>
-        <div class="gallery-container" aria-live="polite">
-          <div class="gallery-image-wrapper">
-            <img
-              id="gallery-image"
-              src="media/images/post1.jpg"
-              alt=""
+        <div class="mission-gallery-js">
+          <div class="gallery-container" aria-live="polite">
+            <div class="gallery-image-wrapper">
+              <img id="gallery-image" src="media/images/post1.jpg" alt="" />
+            </div>
+            <div class="gallery-text">
+              <p id="gallery-caption"></p>
+              <p class="gallery-counter">
+                Bild
+                <span id="gallery-current">1</span>
+                von
+                <span id="gallery-total">5</span>
+              </p>
+            </div>
+          </div>
+          <div id="gallery-dialog" title="Mehr zum Bild" style="display: none">
+            <p id="gallery-dialog-text"></p>
+          </div>
+          <div class="gallery-controls">
+            <button type="button" id="gallery-first">Zum Startbild</button>
+            <button type="button" id="gallery-prev">Zurück</button>
+            <button type="button" id="gallery-next">Weiter</button>
+            <button type="button" id="gallery-toggle-auto">
+              Automatik pausieren
+            </button>
+          </div>
+        </div>
+        <div class="mission-gallery-css">
+          <div class="css-gallery">
+            <input
+              type="radio"
+              name="css-gallery"
+              id="css-slide-1"
+              checked="checked"
             />
+            <input type="radio" name="css-gallery" id="css-slide-2" />
+            <input type="radio" name="css-gallery" id="css-slide-3" />
+            <input type="radio" name="css-gallery" id="css-slide-4" />
+            <input type="radio" name="css-gallery" id="css-slide-5" />
+
+            <div class="css-slides">
+              <figure class="css-slide css-slide-1">
+                <img
+                  src="media/images/carousel-loewenzahn.jpg"
+                  alt="Löwenzahn, der verblüht auf einer Wiese wächst"
+                />
+                <figcaption>
+                  Unsere Mission: Wissen über die Kräfte der Natur teilen und
+                  zeigen, wie sehr sie uns im Alltag stärkt.
+                </figcaption>
+              </figure>
+              <figure class="css-slide css-slide-2">
+                <img
+                  src="media/images/carousel-hand.jpg"
+                  alt="Eine Hand im Grünen, auf die Wasser tröpfelt"
+                />
+                <figcaption>
+                  Verbundenheit mit der Natur ist wichtig für unsere Gesundheit
+                  und unsere Umwelt.
+                </figcaption>
+              </figure>
+              <figure class="css-slide css-slide-3">
+                <img
+                  src="media/images/post3.jpg"
+                  alt="Hände, die eine Pflanze mit einer Harke entfernen"
+                />
+                <figcaption>
+                  Vorurteile an der Wurzel packen – statt vorschnell zu rupfen,
+                  fragen wir nach den Geschichten dahinter.
+                </figcaption>
+              </figure>
+              <figure class="css-slide css-slide-4">
+                <img
+                  src="media/images/carousel-city.jpg"
+                  alt="Begrünte Stadtfassaden der Zukunft"
+                />
+                <figcaption>
+                  Wir träumen von Städten, in denen Wildwuchs nicht bekämpft,
+                  sondern als Klimaretter gefeiert wird.
+                </figcaption>
+              </figure>
+              <figure class="css-slide css-slide-5">
+                <img
+                  src="media/images/carousel-soup.jpg"
+                  alt="Grüne Suppe mit Croutons"
+                />
+                <figcaption>
+                  Von der Wiese auf den Teller: jUNgKRAUT verbindet Naturwissen
+                  mit alltagstauglichen Inspirationen.
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="css-gallery-controls" aria-hidden="true">
+              <label for="css-slide-1">1</label>
+              <label for="css-slide-2">2</label>
+              <label for="css-slide-3">3</label>
+              <label for="css-slide-4">4</label>
+              <label for="css-slide-5">5</label>
+            </div>
           </div>
-          <div class="gallery-text">
-            <p id="gallery-caption"></p>
-            <p class="gallery-counter">
-              Bild
-              <span id="gallery-current">1</span>
-              von
-              <span id="gallery-total">5</span>
-            </p>
-          </div>
-        </div>
-        <div id="gallery-dialog" title="Mehr zum Bild" style="display: none">
-          <p id="gallery-dialog-text"></p>
-        </div>
-        <div class="gallery-controls">
-          <button type="button" id="gallery-first">Zum Startbild</button>
-          <button type="button" id="gallery-prev">Zurück</button>
-          <button type="button" id="gallery-next">Weiter</button>
-          <button type="button" id="gallery-toggle-auto">
-            Automatik pausieren
-          </button>
         </div>
       </section>
       <section class="dandelion-game" aria-labelledby="dandelion-game-heading">
         <h2 id="dandelion-game-heading">Pflück den Löwenzahn!</h2>
         <p class="dandelion-game-intro">
-          Ziehe den Löwenzahn mit der Maus in den Korb. So sammelst du nach und nach
-          alles ein, was sonst oft als „Unkraut“ abgestempelt wird.
+          Ziehe den Löwenzahn mit der Maus in den Korb. So sammelst du nach und
+          nach alles ein, was sonst oft als „Unkraut“ abgestempelt wird.
         </p>
+        <div class="dandelion-game-noscript">
+          <p>JavaScript ist deaktiviert. Bitte aktiviere JavaScript, um das Spiel zu spielen.</p>
+        </div>
         <div class="dandelion-game-field">
           <div class="dandelion-field">
             <button
@@ -178,25 +270,11 @@
                 alt="Löwenzahn"
               />
             </button>
-            <button
-              class="weed-spot"
-              type="button"
-              aria-label="Käfer"
-            >
-              <img
-                src="media/images/basket-game/bug.png"
-                alt="Käfer"
-              />
+            <button class="weed-spot" type="button" aria-label="Käfer">
+              <img src="media/images/basket-game/bug.png" alt="Käfer" />
             </button>
-            <button
-              class="weed-spot"
-              type="button"
-              aria-label="Gras"
-            >
-              <img
-                src="media/images/basket-game/grass.png"
-                alt="Gras"
-              />
+            <button class="weed-spot" type="button" aria-label="Gras">
+              <img src="media/images/basket-game/grass.png" alt="Gras" />
             </button>
             <button
               class="weed-spot dandelion-draggable"
@@ -208,15 +286,8 @@
                 alt="Löwenzahn"
               />
             </button>
-            <button
-              class="weed-spot"
-              type="button"
-              aria-label="Blatt"
-            >
-              <img
-                src="media/images/basket-game/leaf.png"
-                alt="Blatt"
-              />
+            <button class="weed-spot" type="button" aria-label="Blatt">
+              <img src="media/images/basket-game/leaf.png" alt="Blatt" />
             </button>
             <button
               class="weed-spot"
@@ -224,10 +295,7 @@
               aria-hidden="true"
               tabindex="-1"
             >
-              <img
-                  src="media/images/basket-game/bush.png"
-                  alt="Busch"
-              />
+              <img src="media/images/basket-game/bush.png" alt="Busch" />
             </button>
             <button
               class="weed-spot dandelion-draggable"
@@ -248,16 +316,9 @@
               <img
                 src="media/images/basket-game/mushroom.png"
                 alt="Grüne Suppe mit Croutons"
-              />
-            </button><button
-            class="weed-spot"
-            type="button"
-            aria-label="Käfer"
-            >
-              <img
-                src="media/images/basket-game/bug.png"
-                alt="Käfer"
-              />
+              /></button
+            ><button class="weed-spot" type="button" aria-label="Käfer">
+              <img src="media/images/basket-game/bug.png" alt="Käfer" />
             </button>
             <button
               class="weed-spot dandelion-draggable"
@@ -269,46 +330,11 @@
                 alt="Löwenzahn"
               />
             </button>
-            <button
-              class="weed-spot"
-              type="button"
-              aria-label="Busch"
-            >
-              <img
-                src="media/images/basket-game/bush.png"
-                alt="Busch"
-              />
+            <button class="weed-spot" type="button" aria-label="Busch">
+              <img src="media/images/basket-game/bush.png" alt="Busch" />
             </button>
-            <button
-              class="weed-spot"
-              type="button"
-              aria-label="Biene"
-            >
-              <img
-                src="media/images/basket-game/bee.png"
-                alt="Biene"
-              />
-            </button>
-            <button
-            class="weed-spot"
-            type="button"
-            aria-hidden="true"
-            tabindex="-1"
-          >
-            <img
-              src="media/images/basket-game/mushroom.png"
-              alt="Pilz"
-            />
-          </button>
-            <button
-              class="weed-spot"
-              type="button"
-              aria-label="Blatt"
-            >
-              <img
-                src="media/images/basket-game/leaf.png"
-                alt="Blatt"
-              />
+            <button class="weed-spot" type="button" aria-label="Biene">
+              <img src="media/images/basket-game/bee.png" alt="Biene" />
             </button>
             <button
               class="weed-spot"
@@ -316,10 +342,18 @@
               aria-hidden="true"
               tabindex="-1"
             >
-              <img
-                src="media/images/basket-game/grass.png"
-                alt="Gras"
-              />
+              <img src="media/images/basket-game/mushroom.png" alt="Pilz" />
+            </button>
+            <button class="weed-spot" type="button" aria-label="Blatt">
+              <img src="media/images/basket-game/leaf.png" alt="Blatt" />
+            </button>
+            <button
+              class="weed-spot"
+              type="button"
+              aria-hidden="true"
+              tabindex="-1"
+            >
+              <img src="media/images/basket-game/grass.png" alt="Gras" />
             </button>
             <button
               class="weed-spot dandelion-draggable"
@@ -331,7 +365,6 @@
                 alt="Löwenzahn"
               />
             </button>
-
           </div>
           <div
             id="dandelion-basket"
