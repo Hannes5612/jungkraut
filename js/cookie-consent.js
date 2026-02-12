@@ -4,6 +4,7 @@
 (function () {
   const STORAGE_KEY = "jungkraut_cookie_consent";
 
+  // Auslesen der Cookie-Zustimmung
   function getConsent() {
     try {
       const raw = globalThis.localStorage.getItem(STORAGE_KEY);
@@ -20,6 +21,7 @@
     }
   }
 
+  // Speichern der Cookie-Zustimmung
   function saveConsent(consent) {
     try {
       globalThis.localStorage.setItem(
@@ -36,6 +38,7 @@
     }
   }
 
+  // Erstellen des Cookie-Zustimmungsbanners um diesen nicht mehrfach anlegen zu müssen
   function createConsentBanner() {
     if (document.getElementById("cookie-consent-backdrop")) {
       return;
@@ -51,6 +54,7 @@
     modal.setAttribute("role", "dialog");
     modal.setAttribute("aria-modal", "true");
     modal.setAttribute("aria-labelledby", "cookie-consent-title");
+
 
     modal.innerHTML =
       '<h2 id="cookie-consent-title">Cookie-Einstellungen</h2>' +
@@ -90,6 +94,7 @@
     );
     const btnAll = document.getElementById("cookie-consent-accept-all");
 
+    // Schließen des Cookie-Zustimmungsbanners
     function close(consent) {
       saveConsent(consent);
       if (backdrop && backdrop.parentNode) {
@@ -97,6 +102,7 @@
       }
     }
 
+    // Klick auf den Button "Nur technisch notwendige speichern"
     if (btnNecessary) {
       btnNecessary.addEventListener("click", function () {
         close({
@@ -106,6 +112,7 @@
       });
     }
 
+    // Klick auf den Button "Alle akzeptieren"
     if (btnAll) {
       btnAll.addEventListener("click", function () {
         close({
@@ -131,6 +138,7 @@
     );
   }
 
+  // Initialisierung des Cookie-Zustimmungsbanners
   function init() {
     const existingConsent = getConsent();
     if (!existingConsent) {

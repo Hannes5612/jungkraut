@@ -1,9 +1,8 @@
-// Bildgalerie (Carousel) - nur für die Startseite von jUNgKRAUT
-// Es wird gezählt, wie viele Bilder der Benutzer betrachtet hat.
+// Bildgalerie 
+
 var piccount = 0;
 
-// Defensive: Wenn jQuery (z. B. wegen CDN-Fehler) nicht geladen wurde,
-// wird die JS-Galerie deaktiviert und die CSS-Variante sichtbar gelassen.
+// Defensive: Fall jQuery nicht verfügbar, wird die JS-Galerie deaktiviert und die CSS-Variante sichtbar gelassen.
 (function () {
   if (typeof window === "undefined" || typeof window.jQuery === "undefined") {
     console.warn(
@@ -27,6 +26,7 @@ var piccount = 0;
   var $ = window.jQuery;
 
   const INTERVAL_MS = 5000;
+  // Array mit den Bildern und deren Beschreibungen
   const slides = [
     {
       src: "media/images/gallery/carousel-loewenzahn.jpg",
@@ -74,6 +74,7 @@ var piccount = 0;
   let autoMode = true;
   let timerId = null;
 
+  // jQuery-Selektoren für die Elemente der Galerie
   const $image = $("#gallery-image");
   const $caption = $("#gallery-caption");
   const $dialog = $("#gallery-dialog");
@@ -85,6 +86,7 @@ var piccount = 0;
   const $btnNext = $("#gallery-next");
   const $btnToggleAuto = $("#gallery-toggle-auto");
 
+  // Aktualisieren des Labels für den Automatik-Button
   function updateToggleLabel() {
     if (autoMode) {
       $btnToggleAuto.text("Automatik pausieren");
@@ -93,6 +95,7 @@ var piccount = 0;
     }
   }
 
+  // Anzeigen des nächsten Bildes
   function showSlide(newIndex, countView) {
     if (newIndex < 0 || newIndex >= slides.length) {
       return;
@@ -111,6 +114,7 @@ var piccount = 0;
     currentIndex = newIndex;
   }
 
+  // Timer löschen
   function clearTimer() {
     if (timerId !== null) {
       clearInterval(timerId);
@@ -118,6 +122,7 @@ var piccount = 0;
     }
   }
 
+  // Timer starten
   function startTimer() {
     clearTimer();
     timerId = setInterval(function () {
@@ -130,6 +135,7 @@ var piccount = 0;
     }, INTERVAL_MS);
   }
 
+  // Automatik-Modus setzen
   function setAutoMode(enabled) {
     if (enabled === autoMode) {
       return;
@@ -144,6 +150,7 @@ var piccount = 0;
     updateToggleLabel();
   }
 
+  // Initialisierung der Galerie
   $(function () {
     if (!$image.length) {
       return;
@@ -188,6 +195,7 @@ var piccount = 0;
     // CSS-only Galerie ausblenden
     $(".mission-gallery-css").hide();
 
+    // Klick auf den Button "Zurück"
     $btnPrev.on("click", function () {
       if (currentIndex === 0) {
         return;
@@ -198,6 +206,7 @@ var piccount = 0;
       showSlide(currentIndex - 1, true);
     });
 
+    // Klick auf den Button "Weiter"
     $btnNext.on("click", function () {
       if (currentIndex >= slides.length - 1) {
         return;
@@ -208,6 +217,7 @@ var piccount = 0;
       showSlide(currentIndex + 1, true);
     });
 
+    // Klick auf den Button "Zum Startbild"
     $btnFirst.on("click", function () {
       if (currentIndex === 0) {
         return;
@@ -218,6 +228,7 @@ var piccount = 0;
       showSlide(0, true);
     });
 
+    // Klick auf den Button "Automatik pausieren"
     $btnToggleAuto.on("click", function () {
       setAutoMode(!autoMode);
     });

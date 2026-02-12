@@ -3,6 +3,7 @@
 (function () {
   const STORAGE_KEY_CONTACT = "jungkraut_contact_data";
 
+  // Cookie Daten auslesen um herauszufinden ob Komfortdaten gespeichert werden dürfen
   function getComfortConsent() {
     try {
       if (
@@ -18,8 +19,9 @@
     return false;
   }
 
+  // Laden von eventuell zuvor gespeicherten Kontaktformular Daten
   function loadStoredContact() {
-    if (!getComfortConsent()) return null;
+    if (!getComfortConsent()) return null; // Abbrechen wenn kein Consent erteilt
     try {
       const raw = globalThis.localStorage.getItem(STORAGE_KEY_CONTACT);
       if (!raw) return null;
@@ -31,8 +33,9 @@
     }
   }
 
+  // Speichern von Kontaktformular Daten
   function saveContact(data) {
-    if (!getComfortConsent()) return;
+    if (!getComfortConsent()) return; // Abbrechen wenn kein Consent erteilt
     try {
       globalThis.localStorage.setItem(
         STORAGE_KEY_CONTACT,
@@ -47,6 +50,7 @@
     }
   }
 
+  // Fehleranzeige setzen
   function setError(field, message) {
     const group = field.closest(".form-group");
     if (!group) return;
@@ -62,6 +66,7 @@
     errorEl.textContent = message;
   }
 
+  // Fehleranzeige löschen
   function clearError(field) {
     const group = field.closest(".form-group");
     if (!group) return;
@@ -73,6 +78,7 @@
     }
   }
 
+  // Validierung des Namens
   function validateName(field) {
     const value = field.value.trim();
     if (!value) {
@@ -87,6 +93,7 @@
     return true;
   }
 
+  // Validierung der E-Mail-Adresse
   function validateEmail(field) {
     const value = field.value.trim();
     if (!value) {
@@ -103,6 +110,7 @@
     return true;
   }
 
+  // Validierung der Nachricht
   function validateMessage(field) {
     const value = field.value.trim();
     if (!value) {
@@ -120,6 +128,7 @@
     return true;
   }
 
+  // Validierung der Bewertung
   function validateRating(field) {
     const value = field.value;
     if (!value) {
@@ -130,6 +139,7 @@
     return true;
   }
 
+  // Validierung des Formulars, alle Felder werden validiert
   function validateForm(fields) {
     const { name, email, message, rating } = fields;
     const results = [
@@ -154,6 +164,7 @@
     return true;
   }
 
+  // Komposition der E-Mail-Adresse
   function composeMailto(fields) {
     const { name, email, message, rating } = fields;
     const subject = "Kontakt jUNgKRAUT";
@@ -178,6 +189,7 @@
     );
   }
 
+  // Initialisierung des Kontaktformulars
   function init() {
     const form = document.querySelector(".contact-form");
     if (!form) return;
@@ -231,8 +243,6 @@
     globalThis.addEventListener("beforeunload", function (event) {
       if (!isDirty) return;
       event.preventDefault();
-      event.returnValue =
-        "Du hast das Formular noch nicht abgeschickt. Willst du die Seite wirklich verlassen?";
     });
 
     // Standard-Submit-Verhalten überschreiben

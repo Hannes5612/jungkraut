@@ -23,7 +23,6 @@
       rel="stylesheet"
       href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,7 +33,15 @@
       href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script defer src="js/cookie-consent.js"></script>
+    <script defer src="js/home-daily-post.js"></script>
+    <script defer src="js/gallery.js"></script>
+    <script defer src="js/drag-game.js"></script>
+
     <noscript>
       <style>
         .mission-gallery-js {
@@ -57,10 +64,7 @@
         }
       </style>
     </noscript>
-    <script defer src="js/cookie-consent.js"></script>
-    <script defer src="js/home-daily-post.js"></script>
-    <script defer src="js/gallery.js"></script>
-    <script defer src="js/drag-game.js"></script>
+
   </head>
   <body>
     <div class="container">
@@ -164,6 +168,7 @@
         </div>
       </section>
 
+      <!-- Bildgalerie -->
       <section
         class="mission-gallery"
         aria-labelledby="mission-gallery-heading"
@@ -177,7 +182,11 @@
         <div class="mission-gallery-js">
           <div class="gallery-container" aria-live="polite">
             <div class="gallery-image-wrapper">
-              <img id="gallery-image" src="media/images/posts/post1.jpg" alt="" />
+              <img
+                id="gallery-image"
+                src="media/images/posts/post1.jpg"
+                alt=""
+              />
             </div>
             <div class="gallery-text">
               <p id="gallery-caption"></p>
@@ -201,6 +210,8 @@
             </button>
           </div>
         </div>
+
+        <!-- CSS-only Galerie -->
         <div class="mission-gallery-css">
           <div class="css-gallery">
             <input
@@ -280,6 +291,8 @@
           </div>
         </div>
       </section>
+
+      <!-- Drag & Drop Spiel: Löwenzahn pflücken -->
       <section class="dandelion-game" aria-labelledby="dandelion-game-heading">
         <h2 id="dandelion-game-heading">Pflück den Löwenzahn!</h2>
         <p class="dandelion-game-intro">
@@ -406,9 +419,12 @@
             aria-label="Korb zum Sammeln des Löwenzahns"
           >
             <p id="dandelion-basket-text">
-              Zieh den Löwenzahn hierher –
+              Zieh den Löwenzahn hierher -
               <span id="dandelion-count">0</span>
               gesammelt.
+            </p>
+            <p id="dandelion-basket-text-running">
+              Worauf wartest du?
             </p>
           </div>
         </div>

@@ -1,5 +1,5 @@
 // Drag & Drop Spiel: Löwenzahn in den Korb ziehen
-// Defensive: Wenn jQuery oder jQuery UI nicht verfügbar sind (z. B. CDN-Fehler),
+// Defensive: Wenn jQuery nicht verfügbar,
 // wird das Spiel ausgeblendet und der statische Hinweis angezeigt.
 (function () {
   if (
@@ -29,9 +29,11 @@
     return;
   }
 
+  // jQuery initialisieren
   var jQ = window.jQuery;
   jQ.noConflict();
 
+  // Drag & Drop Spiel initialisieren
   jQ(function () {
     var $draggables = jQ(".dandelion-draggable");
     var $basket = jQ("#dandelion-basket");
@@ -42,6 +44,7 @@
       return;
     }
 
+    // Eigenschaften der draggable Elemente setzen
     $draggables.draggable({
       revert: "invalid",
       containment: ".dandelion-game-field",
@@ -55,6 +58,7 @@
       },
     });
 
+    // Eigenschaften der droppable Elemente setzen
     $basket.droppable({
       hoverClass: "dandelion-basket-hover",
       drop: function (event, ui) {
@@ -68,64 +72,15 @@
 
         jQ(this)
           .addClass("dandelion-basket-full")
-          .find("#dandelion-basket-text")
+          .find("#dandelion-basket-text-running")
           .fadeOut(100, function () {
             var msg =
               collected >= $draggables.length
                 ? "Alle Löwenzähne sind im Korb – gar nicht so nutzlos, oder?"
-                : "Weiter so – noch ein paar Löwenzähne warten auf dich!";
+                : "Weiter so - noch ein paar Löwenzähne warten auf dich!";
             jQ(this).text(msg).fadeIn(150);
           });
       },
     });
   });
 })();
-// Drag & Drop Spiel: Löwenzahn in den Korb ziehen
-jQuery.noConflict();
-jQuery(function () {
-  var $draggables = jQuery(".dandelion-draggable");
-  var $basket = jQuery("#dandelion-basket");
-  var $count = jQuery("#dandelion-count");
-  var collected = 0;
-
-  if (!$draggables.length || !$basket.length) {
-    return;
-  }
-
-  $draggables.draggable({
-    revert: "invalid",
-    containment: ".dandelion-game-field",
-    helper: "original",
-    cancel: false, // Buttons trotzdem draggable machen
-    start: function () {
-      jQuery(this).addClass("is-dragging");
-    },
-    stop: function () {
-      jQuery(this).removeClass("is-dragging");
-    },
-  });
-
-  $basket.droppable({
-    hoverClass: "dandelion-basket-hover",
-    drop: function (event, ui) {
-      var $original = ui.draggable;
-      if ($original.hasClass("dandelion-collected")) {
-        return;
-      }
-      $original.addClass("dandelion-collected").fadeTo(200, 0.15);
-      collected += 1;
-      $count.text(collected);
-
-      jQuery(this)
-        .addClass("dandelion-basket-full")
-        .find("#dandelion-basket-text")
-        .fadeOut(100, function () {
-          var msg =
-            collected >= $draggables.length
-              ? "Alle Löwenzähne sind im Korb – gar nicht so nutzlos, oder?"
-              : "Weiter so – noch ein paar Löwenzähne warten auf dich!";
-          jQuery(this).text(msg).fadeIn(150);
-        });
-    },
-  });
-});

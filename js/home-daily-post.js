@@ -1,4 +1,5 @@
 (function () {
+  // Array mit den Posts der Tages
   const postsOfTheDay = [
     {
       title: "Löwenzahn statt Größenwahn",
@@ -42,9 +43,10 @@
     },
   ];
 
+  // Auslesen des Posts der Tages
   function getDailyPost() {
     const today = new Date();
-    // Einfache, aber stabile Verteilung: Tag im Jahr modulo Anzahl Posts
+    // Tag im Jahr modulo Anzahl Posts
     const startOfYear = new Date(today.getFullYear(), 0, 1);
     const diffDays = Math.floor(
       (today - startOfYear) / (1000 * 60 * 60 * 24)
@@ -53,6 +55,7 @@
     return postsOfTheDay[index];
   }
 
+  // Rendern des Posts der Tages
   function renderDailyPost() {
     const container = document.getElementById("daily-post");
     if (!container) return;
@@ -73,6 +76,7 @@
       "</div>";
   }
 
+  // Initialisierung des Posts der Tages
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", renderDailyPost);
   } else {
