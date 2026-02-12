@@ -43,10 +43,16 @@
         .mission-gallery-css {
           display: block;
         }
-        .dandelion-game-field{
+        .dandelion-game-field {
           display: none;
         }
-        .dandelion-game-noscript{
+        .dandelion-game-noscript {
+          display: block;
+        }
+        #daily-post {
+          display: none;
+        }
+        .daily-post-noscript {
           display: block;
         }
       </style>
@@ -135,7 +141,29 @@
       >
         <h2 id="daily-post-heading">Post of the day</h2>
         <div id="daily-post" class="daily-post-placeholder"></div>
+        <div class="daily-post-noscript">
+          <div class="daily-post-card">
+            <div class="daily-post-image">
+              <img
+                src="media/images/post3.jpg"
+                alt="Hände, die mit einer Harke eine Pflanze aus Erde ziehen"
+              />
+            </div>
+            <div class="daily-post-content">
+              <p class="daily-post-label">Post of the day</p>
+              <h3>Unbemerkt durchwuchert</h3>
+              <p>
+                Vom Klettverschluss bis zum Salzstreuer: Wie Unkraut unsere
+                Alltags-Erfindungen inspiriert hat.
+              </p>
+              <a href="posts/post3.html" class="daily-post-link"
+                >Zum Beitrag →</a
+              >
+            </div>
+          </div>
+        </div>
       </section>
+
       <section
         class="mission-gallery"
         aria-labelledby="mission-gallery-heading"
@@ -239,12 +267,15 @@
               </figure>
             </div>
 
-            <div class="css-gallery-controls" aria-hidden="true">
-              <label for="css-slide-1">1</label>
-              <label for="css-slide-2">2</label>
-              <label for="css-slide-3">3</label>
-              <label for="css-slide-4">4</label>
-              <label for="css-slide-5">5</label>
+            <div
+              class="css-gallery-controls"
+              aria-label="Galerie-Steuerung ohne JavaScript"
+            >
+              <label for="css-slide-1" tabindex="0">1</label>
+              <label for="css-slide-2" tabindex="0">2</label>
+              <label for="css-slide-3" tabindex="0">3</label>
+              <label for="css-slide-4" tabindex="0">4</label>
+              <label for="css-slide-5" tabindex="0">5</label>
             </div>
           </div>
         </div>
@@ -256,7 +287,10 @@
           nach alles ein, was sonst oft als „Unkraut“ abgestempelt wird.
         </p>
         <div class="dandelion-game-noscript">
-          <p>JavaScript ist deaktiviert. Bitte aktiviere JavaScript, um das Spiel zu spielen.</p>
+          <p>
+            JavaScript ist deaktiviert. Bitte aktiviere JavaScript, um das Spiel
+            zu spielen.
+          </p>
         </div>
         <div class="dandelion-game-field">
           <div class="dandelion-field">

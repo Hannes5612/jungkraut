@@ -417,7 +417,6 @@ body {
 .css-gallery input[type="radio"] {
   position: absolute;
   opacity: 0;
-  pointer-events: none;
 }
 
 .css-slides {
@@ -462,16 +461,22 @@ body {
 .css-gallery-controls {
   display: flex;
   justify-content: center;
-  gap: 0.4rem;
-  margin-top: 0.75rem;
+  gap: 0.8rem;
+  margin: 0.75rem;
 }
 
 .css-gallery-controls label {
   width: 10px;
   height: 10px;
+  margin-top: 0.25rem;
   border-radius: 999px;
   background-color: #cbd5e0;
   cursor: pointer;
+}
+
+.css-gallery-controls label:focus {
+  outline: 2px solid #0a5514;
+  outline-offset: 2px;
 }
 
 #css-slide-1:checked ~ .css-gallery-controls label[for="css-slide-1"],
@@ -668,6 +673,15 @@ body {
   padding: 1.5rem;
   align-items: center;
 }
+.daily-post-noscript {
+  display: none;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.daily-post-noscript p {
+  font-size: 0.9rem;
+  font-style: italic;}
 
 .daily-post-image {
   flex: 0 0 260px;
