@@ -159,6 +159,8 @@ body {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  animation: fadeInUp 0.6s ease-out;
+
 }
 
 /* Hover-Effekt für Posts */
@@ -761,7 +763,6 @@ body {
   - Flex für vertikale Anordnung
 */
 .inline-image {
-  display: inline-block;
   margin: 1rem 0;
   text-align: center;
   width: 100%;
@@ -934,10 +935,6 @@ video {
   }
 }
 
-/* Animation auf Posts anwenden */
-.post {
-  animation: fadeInUp 0.6s ease-out;
-}
 
 /* Verzögerte Animation für zweiten Post */
 .post:nth-child(2) {

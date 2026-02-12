@@ -83,6 +83,7 @@
       '<p class="cookie-consent-hint">Weitere Informationen finden Sie in unserer <a href="imprint.html">Datenschutzerklärung</a>.</p>' +
       '<div class="cookie-consent-actions">' +
       '  <button type="button" class="cookie-btn-primary" id="cookie-consent-necessary-only">Nur technisch notwendige speichern</button>' +
+      '  <button type="button" class="cookie-btn-secondary" id="cookie-consent-save-selection">Auswahl speichern</button>' +
       '  <button type="button" class="cookie-btn-secondary" id="cookie-consent-accept-all">Alle akzeptieren</button>' +
       "</div>";
 
@@ -92,7 +93,13 @@
     const btnNecessary = document.getElementById(
       "cookie-consent-necessary-only",
     );
+    const btnSaveSelection = document.getElementById(
+      "cookie-consent-save-selection",
+    );
     const btnAll = document.getElementById("cookie-consent-accept-all");
+    const comfortCheckbox = document.getElementById(
+      "cookie-consent-comfort",
+    );
 
     // Schließen des Cookie-Zustimmungsbanners
     function close(consent) {
@@ -109,6 +116,23 @@
           necessary: true,
           comfort: false,
         });
+
+        // Optische Rückmeldung im Dialog
+        if (comfortCheckbox) {
+          comfortCheckbox.checked = false;
+        }
+      });
+    }
+
+    // Klick auf den Button "Auswahl speichern"
+    if (btnSaveSelection) {
+      btnSaveSelection.addEventListener("click", function () {
+        const comfort =
+          comfortCheckbox && comfortCheckbox.checked ? true : false;
+        close({
+          necessary: true,
+          comfort: comfort,
+        });
       });
     }
 
@@ -119,6 +143,10 @@
           necessary: true,
           comfort: true,
         });
+
+        if (comfortCheckbox) {
+          comfortCheckbox.checked = true;
+        }
       });
     }
 
