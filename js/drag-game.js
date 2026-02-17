@@ -36,6 +36,7 @@
   // Drag & Drop Spiel initialisieren
   jQ(function () {
     var $draggables = jQ(".dandelion-draggable");
+    var $weedSpots = jQ(".weed-spot");
     var $basket = jQ("#dandelion-basket");
     var $count = jQ("#dandelion-count");
     var collected = 0;
@@ -43,6 +44,22 @@
     if (!$draggables.length || !$basket.length) {
       return;
     }
+
+    // Tooltip-Texte setzen: Welche Elemente sollen bewegt werden?
+    $draggables.attr(
+      "title",
+      "Diesen Löwenzahn kannst du in den Korb ziehen.",
+    );
+    $weedSpots
+      .not(".dandelion-draggable")
+      .attr("title", "Lass mich lieber in der Wiese – ich bleibe hier.");
+
+    // jQuery UI Tooltip aktivieren
+    $weedSpots.tooltip({
+      track: true,
+      show: { effect: "fadeIn", duration: 150 },
+      hide: { effect: "fadeOut", duration: 100 },
+    });
 
     // Eigenschaften der draggable Elemente setzen
     $draggables.draggable({
@@ -66,7 +83,12 @@
         if ($original.hasClass("dandelion-collected")) {
           return;
         }
-        $original.addClass("dandelion-collected").fadeTo(200, 0.15);
+        // Tooltip für eingesammelten Löwenzahn entfernen/deaktivieren
+        $original
+          .tooltip("destroy")
+          .removeAttr("title")
+          .addClass("dandelion-collected")
+          .fadeTo(200, 0.15);
         collected += 1;
         $count.text(collected);
 
