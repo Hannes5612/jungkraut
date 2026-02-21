@@ -5,16 +5,12 @@
 
   // Cookie Daten auslesen um herauszufinden ob Komfortdaten gespeichert werden dürfen
   function getComfortConsent() {
-    try {
-      if (
-        globalThis.jungkrautCookieConsent &&
-        typeof globalThis.jungkrautCookieConsent.getConsent === "function"
-      ) {
-        const consent = globalThis.jungkrautCookieConsent.getConsent();
-        return !!(consent && consent.comfort);
-      }
-    } catch (e) {
-      // Wenn Cookie-Consent nicht verfügbar ist, ignorieren
+    if (
+      globalThis.jungkrautCookieConsent &&
+      typeof globalThis.jungkrautCookieConsent.getConsent === "function"
+    ) {
+      const consent = globalThis.jungkrautCookieConsent.getConsent();
+      return !!(consent && consent.comfort);
     }
     return false;
   }
@@ -22,21 +18,18 @@
   // Laden von eventuell zuvor gespeicherten Kontaktformular Daten
   function loadStoredContact() {
     if (!getComfortConsent()) return null; // Abbrechen wenn kein Consent erteilt
-    try {
-      const raw = globalThis.localStorage.getItem(STORAGE_KEY_CONTACT);
-      if (!raw) return null;
-      const parsed = JSON.parse(raw);
-      if (!parsed || typeof parsed !== "object") return null;
-      return parsed;
-    } catch (e) {
-      return null;
-    }
+
+    const raw = globalThis.localStorage.getItem(STORAGE_KEY_CONTACT);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return null;
+    return parsed;
+
   }
 
   // Speichern von Kontaktformular Daten
   function saveContact(data) {
     if (!getComfortConsent()) return; // Abbrechen wenn kein Consent erteilt
-    try {
       globalThis.localStorage.setItem(
         STORAGE_KEY_CONTACT,
         JSON.stringify({
@@ -45,9 +38,6 @@
           rating: data.rating || "",
         }),
       );
-    } catch (e) {
-      // Speicherung ist rein komfort-orientiert – Fehler können ignoriert werden
-    }
   }
 
   // Fehleranzeige setzen
@@ -97,13 +87,13 @@
   function validateEmail(field) {
     const value = field.value.trim();
     if (!value) {
-      setError(field, "Bitte gib deine E‑Mail-Adresse ein.");
+      setError(field, "Bitte gib deine E-Mail-Adresse ein.");
       return false;
     }
     // Einfache, praxisnahe E‑Mail-Plausibilitätsprüfung
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(value)) {
-      setError(field, "Diese E‑Mail-Adresse scheint nicht gültig zu sein.");
+      setError(field, "Diese E-Mail-Adresse scheint nicht gültig zu sein.");
       return false;
     }
     clearError(field);
@@ -289,6 +279,7 @@
     }
   }
 
+  // Initialisierung des Kontaktformulars nur wenn das DOM geladen ist
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

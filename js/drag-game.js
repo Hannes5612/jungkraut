@@ -1,6 +1,6 @@
 // Drag & Drop Spiel: Löwenzahn in den Korb ziehen
-// Defensive: Wenn jQuery nicht verfügbar,
-// wird das Spiel ausgeblendet und der statische Hinweis angezeigt.
+
+// Defensive: Wenn jQuery nicht verfügbar, wird das Spiel ausgeblendet und der statische Hinweis angezeigt.
 (function () {
   if (
     typeof window === "undefined" ||
@@ -10,22 +10,20 @@
     !window.jQuery.ui.droppable
   ) {
     console.warn(
-      "[jUNgKRAUT] Drag-&-Drop-Spiel konnte nicht initialisiert werden, jQuery oder jQuery UI fehlt.",
+      "[jUNgKRAUT] Drag&Drop-Spiel konnte nicht initialisiert werden, jQuery oder jQuery UI fehlt.", 
     );
-    try {
-      var gameField = document.querySelector(".dandelion-game-field");
-      var noscriptHint = document.querySelector(".dandelion-game-noscript");
-      if (gameField) {
-        gameField.style.display = "none";
-      }
-      if (noscriptHint) {
-        noscriptHint.style.display = "block";
-        noscriptHint.innerHTML =
-          "<p>Das Drag-&-Drop-Spiel konnte leider nicht geladen werden, da hierfür die Bibliothek jQuery benötigt wird. Bitte prüfen Sie Ihre Internetverbindung oder laden Sie die Seite erneut.<p>";
-      }
-    } catch (e) {
-      // Wenn das auch fehlschlägt, bleibt einfach der aktuelle Zustand erhalten.
+
+    var gameField = document.querySelector(".dandelion-game-field");
+    var noscriptHint = document.querySelector(".dandelion-game-noscript");
+    if (gameField) {
+      gameField.style.display = "none";
     }
+    if (noscriptHint) {
+      noscriptHint.style.display = "block";
+      noscriptHint.innerHTML =
+        "<p>Das Drag-&-Drop-Spiel konnte leider nicht geladen werden, da hierfür die Bibliothek jQuery benötigt wird. Bitte prüfen Sie Ihre Internetverbindung oder laden Sie die Seite erneut.<p>";
+    }
+
     return;
   }
 
@@ -35,24 +33,21 @@
 
   // Drag & Drop Spiel initialisieren
   jQ(function () {
-    var $draggables = jQ(".dandelion-draggable");
-    var $weedSpots = jQ(".weed-spot");
-    var $basket = jQ("#dandelion-basket");
-    var $count = jQ("#dandelion-count");
-    var collected = 0;
+    let $draggables = jQ(".dandelion-draggable");
+    let $weedSpots = jQ(".weed-spot");
+    let $basket = jQ("#dandelion-basket");
+    let $count = jQ("#dandelion-count");
+    let collected = 0;
 
     if (!$draggables.length || !$basket.length) {
       return;
     }
 
     // Tooltip-Texte setzen: Welche Elemente sollen bewegt werden?
-    $draggables.attr(
-      "title",
-      "Diesen Löwenzahn kannst du in den Korb ziehen.",
-    );
+    $draggables.attr("title", "Diesen Löwenzahn kannst du in den Korb ziehen.");
     $weedSpots
       .not(".dandelion-draggable")
-      .attr("title", "Lass mich lieber in der Wiese – ich bleibe hier.");
+      .attr("title", "Lass mich lieber in der Wiese, ich bleibe hier.");
 
     // jQuery UI Tooltip aktivieren
     $weedSpots.tooltip({
@@ -83,7 +78,7 @@
         if ($original.hasClass("dandelion-collected")) {
           return;
         }
-        // Tooltip für eingesammelten Löwenzahn entfernen/deaktivieren
+        // Tooltip für eingesammelten Löwenzahn entfernen
         $original
           .tooltip("destroy")
           .removeAttr("title")
@@ -96,10 +91,12 @@
           .addClass("dandelion-basket-full")
           .find("#dandelion-basket-text-running")
           .fadeOut(100, function () {
-            var msg =
-              collected >= $draggables.length
-                ? "Alle Löwenzähne sind im Korb – gar nicht so nutzlos, oder?"
-                : "Weiter so - noch ein paar Löwenzähne warten auf dich!";
+            let msg;
+              if (collected >= $draggables.length) {
+                msg = "Alle Löwenzähne sind im Korb! Gar nicht so nutzlos, oder?";
+              } else {
+                msg = "Weiter so, noch ein paar Löwenzähne warten auf dich!";
+              }
             jQ(this).text(msg).fadeIn(150);
           });
       },

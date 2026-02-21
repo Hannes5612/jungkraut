@@ -64,7 +64,6 @@
         }
       </style>
     </noscript>
-
   </head>
   <body>
     <div class="container">
@@ -109,7 +108,7 @@
             dir, dass hinter dem, was uns stört, oft mehr steckt als du denkst.
             Wir bieten dir die Möglichkeit, mit uns unter die Oberfläche zu
             schauen. Egal, ob du dich nur informieren willst oder das Thema noch
-            mal ganz neu denken möchtest – hier bist du richtig!
+            mal ganz neu denken möchtest, hier bist du richtig!
           </p>
           <p>
             Du willst dein Wachstum boosten? Klicke dich durch unsere
@@ -205,6 +204,51 @@
             <button type="button" id="gallery-first">Zum Startbild</button>
             <button type="button" id="gallery-prev">Zurück</button>
             <button type="button" id="gallery-next">Weiter</button>
+            <span
+              class="gallery-jump-wrap"
+              aria-label="Direkt zu Bild springen"
+            >
+              <button
+                type="button"
+                class="gallery-jump"
+                data-index="1"
+                aria-label="Bild 1"
+              >
+                1
+              </button>
+              <button
+                type="button"
+                class="gallery-jump"
+                data-index="2"
+                aria-label="Bild 2"
+              >
+                2
+              </button>
+              <button
+                type="button"
+                class="gallery-jump"
+                data-index="3"
+                aria-label="Bild 3"
+              >
+                3
+              </button>
+              <button
+                type="button"
+                class="gallery-jump"
+                data-index="4"
+                aria-label="Bild 4"
+              >
+                4
+              </button>
+              <button
+                type="button"
+                class="gallery-jump"
+                data-index="5"
+                aria-label="Bild 5"
+              >
+                5
+              </button>
+            </span>
             <button type="button" id="gallery-toggle-auto">
               Automatik pausieren
             </button>
@@ -423,9 +467,7 @@
               <span id="dandelion-count">0</span>
               gesammelt.
             </p>
-            <p id="dandelion-basket-text-running">
-              Worauf wartest du?
-            </p>
+            <p id="dandelion-basket-text-running">Worauf wartest du?</p>
           </div>
         </div>
       </section>

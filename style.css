@@ -418,6 +418,22 @@ body {
   background-color: #0c6a1a;
 }
 
+.gallery-jump-wrap {
+  display: inline-flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.gallery-jump {
+  min-width: 2rem;
+}
+
+.gallery-jump-active,
+.gallery-controls .gallery-jump.gallery-jump-active:hover {
+  background-color: #063d0d;
+  font-weight: bold;
+}
+
 /* CSS-only Galerie (Fallback ohne JavaScript) */
 .css-gallery {
   margin-top: 1.25rem;

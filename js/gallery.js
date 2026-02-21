@@ -1,25 +1,21 @@
 // Bildgalerie 
 
-var piccount = 0;
-
 // Defensive: Fall jQuery nicht verfügbar, wird die JS-Galerie deaktiviert und die CSS-Variante sichtbar gelassen.
 (function () {
   if (typeof window === "undefined" || typeof window.jQuery === "undefined") {
     console.warn(
       "[jUNgKRAUT] Galerie konnte nicht initialisiert werden, jQuery ist nicht verfügbar.",
     );
-    try {
-      var jsGallery = document.querySelector(".mission-gallery-js");
-      var cssGallery = document.querySelector(".mission-gallery-css");
-      if (jsGallery) {
-        jsGallery.style.display = "none";
-      }
-      if (cssGallery) {
-        cssGallery.style.display = "block";
-      }
-    } catch (e) {
-      // Wenn auch das fehlschlägt, geschieht nichts weiter – die Seite bleibt nutzbar.
+
+    var jsGallery = document.querySelector(".mission-gallery-js");
+    var cssGallery = document.querySelector(".mission-gallery-css");
+    if (jsGallery) {
+      jsGallery.style.display = "none";
     }
+    if (cssGallery) {
+      cssGallery.style.display = "block";
+    }
+
     return;
   }
 
@@ -85,6 +81,7 @@ var piccount = 0;
   const $btnPrev = $("#gallery-prev");
   const $btnNext = $("#gallery-next");
   const $btnToggleAuto = $("#gallery-toggle-auto");
+  const $jumpBtns = $(".gallery-jump");
 
   // Aktualisieren des Labels für den Automatik-Button
   function updateToggleLabel() {
@@ -96,10 +93,11 @@ var piccount = 0;
   }
 
   // Anzeigen des nächsten Bildes
-  function showSlide(newIndex, countView) {
+  function showSlide(newIndex) {
     if (newIndex < 0 || newIndex >= slides.length) {
       return;
     }
+    // nächstes Bild setzen
     const slide = slides[newIndex];
     $image.attr("src", slide.src);
     $image.attr("alt", slide.alt);
@@ -108,9 +106,19 @@ var piccount = 0;
     $current.text(newIndex + 1);
     $total.text(slides.length);
 
-    if (countView && newIndex !== currentIndex) {
-      piccount++;
-    }
+    // Aktiven Sprung-Button markieren
+    $jumpBtns.removeClass("gallery-jump-active").attr("aria-current", null);
+    $jumpBtns.each(function () {
+      var btnIndex = $(this).data("index"); // hole Index vom Datenattribut
+      if (btnIndex === (newIndex + 1)) {
+        $(this).addClass("gallery-jump-active"); // aktiven Sprung-Button markieren
+        $(this).attr("aria-current", "true"); 
+      } else {
+        $(this).removeClass("gallery-jump-active"); // nicht mehr aktiven Sprung-Button abmarkieren
+        $(this).attr("aria-current", null); 
+      }
+    });
+
     currentIndex = newIndex;
   }
 
@@ -138,10 +146,10 @@ var piccount = 0;
   // Automatik-Modus setzen
   function setAutoMode(enabled) {
     if (enabled === autoMode) {
-      return;
+      return; // wenn der Automatik-Modus bereits aktiv ist, nichts tun
     }
     autoMode = enabled;
-    console.log("mode changed");
+    console.log("mode changed"); // für debugging
     if (autoMode) {
       startTimer();
     } else {
@@ -153,21 +161,23 @@ var piccount = 0;
   // Initialisierung der Galerie
   $(function () {
     if (!$image.length) {
-      return;
+      return; // wenn das Bild nicht gefunden wird, nichts tun
     }
 
+    // Dialog hinzufügen
     if ($dialog.length) {
       $dialog.dialog({
         autoOpen: false,
-        modal: true,
+        modal: true, // Dialog ist modal, d.h. der Hintergrund ist schwarz und der Dialog ist in der Mitte des Bildschirms.
         width: 520,
         show: { effect: "fade", duration: 250 },
         hide: { effect: "fade", duration: 180 },
         classes: {
-          "ui-dialog": "mission-dialog",
+          "ui-dialog": "mission-dialog", // Dialog Klasse für styling
         },
       });
 
+      // Dialog öffnen wenn das Bild angeklickt wird
       $image.on("click keypress", function (event) {
         if (
           event.type === "click" ||
@@ -175,26 +185,24 @@ var piccount = 0;
           event.key === " "
         ) {
           event.preventDefault();
-          $dialogText.text(slides[currentIndex].description);
+          $dialogText.text(slides[currentIndex].description); // Bildbeschreibung setzen
           $dialog.dialog("open");
         }
       });
 
-      $image.attr("tabindex", "0");
-      $image.attr("role", "button");
+      $image.attr("tabindex", "0"); // Bild ist fokussierbar
+      $image.attr("role", "button");    // Bild ist ein Button, um die Bildbeschreibung anzuzeigen. Drücke Enter oder die Leertaste.
       $image.attr(
-        "aria-label",
-        "Bildbeschreibung anzeigen. Drücke Enter oder die Leertaste.",
+        "aria-label", 
+        "Bildbeschreibung anzeigen. Drücke Enter oder die Leertaste."
       );
     }
-
+    
     // Initial anzeigen, aber noch nicht als Betrachtung zählen
     showSlide(0, false);
-    // Automatik starten
+    // Automatik starten und CSS-only Galerie ausblenden
     startTimer();
-    // CSS-only Galerie ausblenden
     $(".mission-gallery-css").hide();
-
     // Klick auf den Button "Zurück"
     $btnPrev.on("click", function () {
       if (currentIndex === 0) {
@@ -209,7 +217,7 @@ var piccount = 0;
     // Klick auf den Button "Weiter"
     $btnNext.on("click", function () {
       if (currentIndex >= slides.length - 1) {
-        return;
+        return; // wenn das letzte Bild angeklickt wird, nichts tun
       }
       if (autoMode) {
         setAutoMode(false);
@@ -231,6 +239,28 @@ var piccount = 0;
     // Klick auf den Button "Automatik pausieren"
     $btnToggleAuto.on("click", function () {
       setAutoMode(!autoMode);
+    });
+
+    // Direkt zu Bild 1–5 springen
+    $jumpBtns.on("click", function () {
+      // hole index vom datenattribut
+      var dataIndex = $(this).attr("data-index");
+      var index = parseInt(dataIndex, 10) - 1;
+
+      // überprüfe ob index gültig ist
+      if (index == currentIndex) {
+        return;
+      }
+      if (index < 0) {
+        return;
+      }
+      if (index >= slides.length) {
+        return;
+      }
+      if (autoMode) {
+        setAutoMode(false);
+      }
+      showSlide(index, true);
     });
 
     updateToggleLabel();

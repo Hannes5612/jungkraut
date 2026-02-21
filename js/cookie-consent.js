@@ -6,36 +6,29 @@
 
   // Auslesen der Cookie-Zustimmung
   function getConsent() {
-    try {
-      const raw = globalThis.localStorage.getItem(STORAGE_KEY);
-      if (!raw) return null;
-      const parsed = JSON.parse(raw);
-      if (!parsed || typeof parsed !== "object") return null;
-      if (!parsed.necessary) return null;
-      return {
-        necessary: true,
-        comfort: !!parsed.comfort,
-      };
-    } catch (e) {
-      return null;
-    }
+    const raw = globalThis.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return null;
+    if (!parsed.necessary) return null;
+    return {
+      necessary: true,
+      comfort: !!parsed.comfort,
+    };
   }
 
   // Speichern der Cookie-Zustimmung
   function saveConsent(consent) {
-    try {
-      globalThis.localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({
-          necessary: !!consent.necessary,
-          comfort: !!consent.comfort,
-          // Optional: Timestamp der Zustimmung
-          timestamp: new Date().toISOString(),
-        }),
-      );
-    } catch (e) {
-      // Wenn localStorage nicht verfügbar ist, ignorieren wir den Fehler still
-    }
+    globalThis.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        necessary: !!consent.necessary,
+        comfort: !!consent.comfort,
+        // Optional: Timestamp der Zustimmung
+        timestamp: new Date().toISOString(),
+      }),
+    );
+    
   }
 
   // Erstellen des Cookie-Zustimmungsbanners um diesen nicht mehrfach anlegen zu müssen
@@ -44,18 +37,20 @@
       return;
     }
 
+    // Hintergrund erstellen
     const backdrop = document.createElement("div");
     backdrop.id = "cookie-consent-backdrop";
     backdrop.className = "cookie-consent-backdrop";
     backdrop.setAttribute("role", "presentation");
 
+    // Modal erstellen
     const modal = document.createElement("div");
     modal.className = "cookie-consent-modal";
     modal.setAttribute("role", "dialog");
     modal.setAttribute("aria-modal", "true");
     modal.setAttribute("aria-labelledby", "cookie-consent-title");
 
-
+    // Modal Inhalt erstellen in html syntax
     modal.innerHTML =
       '<h2 id="cookie-consent-title">Cookie-Einstellungen</h2>' +
       "<p>Wir verwenden Cookies und ähnliche Technologien, um diese Website bereitzustellen und optional Ihre Nutzungserfahrung zu verbessern.</p>" +
@@ -87,9 +82,11 @@
       '  <button type="button" class="cookie-btn-secondary" id="cookie-consent-accept-all">Alle akzeptieren</button>' +
       "</div>";
 
+    // Hintergrund und Modal zusammenfügen
     backdrop.appendChild(modal);
     document.body.appendChild(backdrop);
 
+    // Buttons erstellen
     const btnNecessary = document.getElementById(
       "cookie-consent-necessary-only",
     );
@@ -101,18 +98,18 @@
       "cookie-consent-comfort",
     );
 
-    // Schließen des Cookie-Zustimmungsbanners
+    // Schließen des Cookie-Zustimmungsbanners und speichern der Zustimmung
     function close(consent) {
       saveConsent(consent);
       if (backdrop && backdrop.parentNode) {
-        backdrop.remove();
+        backdrop.remove(); // Hintergrund entfernen
       }
     }
 
     // Klick auf den Button "Nur technisch notwendige speichern"
     if (btnNecessary) {
       btnNecessary.addEventListener("click", function () {
-        close({
+        close({ // Zustimmung speichern
           necessary: true,
           comfort: false,
         });
@@ -173,7 +170,8 @@
       createConsentBanner();
     }
   }
-
+  
+  // Initialisierung des Cookie-Zustimmungsbanners nur wenn das DOM geladen ist
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
